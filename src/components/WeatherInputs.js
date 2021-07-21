@@ -9,7 +9,7 @@ function WeatherInputs({ getWeatherInfo }) {
 
 	return (
 		<div className="container">
-			<div className="">
+			<div className="row">
 				<form onSubmit={handleSubmit} action="">
 					<input
 						type="text"
@@ -18,7 +18,9 @@ function WeatherInputs({ getWeatherInfo }) {
 						onChange={(e) => setCity(e.target.value)}
 						placeholder="Enter your city..."
 					/>
-					<button type="submit">Get Weather</button>
+					<button className="btn btn-primary" type="submit">
+						Get Weather
+					</button>
 				</form>
 			</div>
 		</div>
