@@ -12,7 +12,6 @@ function WeatherDisplay({
 	conditionIcon,
 }) {
 	const [forecastInfo, setForecastInfo] = useState([])
-	const [showForecast, setShowForecast] = useState(false)
 
 	const getForecastInfo = async () => {
 		const urlForecastWeather = `${BASE_URL}/forecast.json?key=${API_KEY}&q=${city}&days=${forecastDays}`
@@ -23,30 +22,25 @@ function WeatherDisplay({
 
 	useEffect(() => {
 		getForecastInfo()
-	}, [])
+	})
 
 	return (
-		<section>
-			<div>
-				<h3>
+		<div className="pt-3">
+			<div className="">
+				<h3 className="text-center">
 					{city} / {region} / {country}
 				</h3>
-				<img src={conditionIcon} alt="" />
-				<h4>
+				<div className="text-center">
+					<img src={conditionIcon} alt="" className="text-center" />
+				</div>
+				<h4 className="text-center">
 					{tempC}°C / {tempF}°F
 				</h4>
-				<button onClick={() => setShowForecast(true)}>
-					Show Forecast
-				</button>
 			</div>
 			<div className="card">
-				{showForecast ? (
-					<WeatherForecast forecastInfo={forecastInfo} />
-				) : (
-					<h1>no forecast</h1>
-				)}
+				<WeatherForecast forecastInfo={forecastInfo} />
 			</div>
-		</section>
+		</div>
 	)
 }
 
